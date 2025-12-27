@@ -1,0 +1,1 @@
+# Paste one direct ESA CCI SM file URL per line

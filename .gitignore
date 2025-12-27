@@ -1,0 +1,55 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging / builds
+build/
+dist/
+.eggs/
+*.egg-info/
+*.whl
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.cache/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- OS / editors ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# --- Logs & local run artifacts ---
+*.log
+logs/*
+!logs/.gitkeep
+
+# --- Data (downloaded / generated) ---
+data/*
+data_raw/*
+!data/.gitkeep
+!data_raw/.gitkeep
+
+# Keep this one (commonly needed for competitions)
+data/SampleSubmission.csv
+StarterNotebook.ipynb
+
+# --- Secrets (keep credentials out of git) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key

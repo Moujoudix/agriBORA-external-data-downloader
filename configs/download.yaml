@@ -1,0 +1,107 @@
+# configs/download.yaml
+global:
+  out_dir: data_raw
+  start_date: "2015-01-01"
+  end_date: "2025-12-31"
+  http_timeout: 120
+  http_sleep_seconds: 1.0
+  log_dir: logs
+
+sources:
+  # PRICES
+  kamis:
+    enabled: true
+    products:
+      - Dry Maize
+      - Rice
+      - Wheat
+      - Wheat Flour
+      - Maize Flour
+      - Red Sorghum
+      - White Sorghum
+      - Finger Millet
+      - Pearl Rush Millet
+      - Beans Red Haricot (Wairimu)
+      - Beans (Yellow-Green)
+      - Beans Rosecoco
+      - Beans (Mwitemania)
+      - Beans (Mwezi Moja)
+      - Beans (Canadian wonder)
+      - French beans
+      - Beans Rosecoco (Nyayo)
+      - Mixed Beans
+      - Beans (Yellow)
+      - Soybean oil
+      - Coconut Oil
+      - Sunflower Oil
+    per_page: 3000
+    max_offsets: 200
+
+  kenya_opendata_socrata:
+    enabled: false
+    dataset_id: "p7k9-6zuz"  # AMIS commodity prices (legacy backfill)
+    page_size: 50000
+
+  hdx_wfp_prices:
+    enabled: true
+    base: "https://data.humdata.org"
+    package_id: "wfp-food-prices"
+    country_hint: "Kenya"
+
+  # MACRO (open API)
+  worldbank_wdi:
+    enabled: true
+    country: "KEN"
+    indicators:
+      - "FP.CPI.TOTL"       # CPI (index)
+      - "FP.CPI.TOTL.ZG"    # inflation (%)
+      - "PA.NUS.FCRF"       # official exchange rate
+
+  # WEATHER
+  nasa_power:
+    enabled: true
+    points_csv: "configs/points.csv"
+    parameters:
+      - "T2M"
+      - "PRECTOT"
+      - "WS2M"
+      - "RH2M"
+      - "ALLSKY_SFC_SW_DWN"
+    community: "AG"
+
+  era5_cds:
+    enabled: true  # turn on only after you set up ~/.cdsapirc
+    dataset: "reanalysis-era5-single-levels"
+    area: [5.5, 33.8, -4.9, 42.3]   # [N, W, S, E] Kenya-ish bbox
+    variables:
+      - "2m_temperature"
+      - "total_precipitation"
+      - "surface_solar_radiation_downwards"
+      - "10m_u_component_of_wind"
+      - "10m_v_component_of_wind"
+      - "volumetric_soil_water_layer_2"
+      - "volumetric_soil_water_layer_3"
+      - "volumetric_soil_water_layer_4"
+
+  # SPATIAL
+  geoboundaries_adm1:
+    enabled: true
+    iso3: "KEN"
+    adm: "ADM1"
+
+  # URL-list based (you paste URLs when you decide the exact product/version)
+  spei_urls:
+    enabled: false
+    urls_file: "configs/urls/spei_urls.txt"
+
+  esa_cci_sm_urls:
+    enabled: false
+    urls_file: "configs/urls/esa_cci_sm_urls.txt"
+
+  # TRADE (template; may need adjustments)
+  uncomtrade:
+    enabled: false
+    hs_code: "1005"
+    reporter: "KEN"
+    year_from: 2015
+    year_to: 2025

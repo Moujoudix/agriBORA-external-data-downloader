@@ -1,0 +1,10 @@
+pandas
+requests
+PyYAML
+python-dotenv
+beautifulsoup4
+lxml
+tqdm
+cdsapi
+earthengine-api
+geopandas
