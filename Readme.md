@@ -120,4 +120,5 @@ By default the project writes:
 
 * `__pycache__/` folders are Python bytecode caches and are intentionally ignored.
 
-> Good luck. May your API keys be valid and your rate limits be generous.
+
+> 🪬 Good luck. May your API keys be valid and your rate limits be generous. 🪬
